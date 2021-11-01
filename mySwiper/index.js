@@ -17,7 +17,7 @@ new Vue({
           // 注释掉上面这个，则不显示小点点
           loop: true, // 循环
           autoplay: {
-            delay: 2500,
+            delay: 10000,
             disableOnInteraction: false,
           }, // 自动播放,注释掉则不自动播放
           on: {
