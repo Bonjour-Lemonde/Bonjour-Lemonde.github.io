@@ -3075,8 +3075,8 @@ pre:hover::-webkit-scrollbar-thumb:hover,
 .about-header {
   position: relative;
   width: 100%;
-  height: 50vh;
-  height: 60vh;
+  height: 11vh;
+  height: 11vh;
   overflow: hidden;
   background-size: cover;
   background-position: center center;
@@ -3089,14 +3089,14 @@ pre:hover::-webkit-scrollbar-thumb:hover,
 }
 .about-header .about-header-title {
   z-index: 2;
-  font-size: 2.5rem;
+  font-size: 0rem;
   font-family: MV Boli;
   color: #fff;
 }
 .about-header .about-header-desc {
   z-index: 2;
   font-weight: 500;
-  font-size: 1.25rem;
+  font-size: 0rem;
   line-height: 1.4em;
   font-family: 'Architects Daughter', cursive !important;
   color: #fff;
