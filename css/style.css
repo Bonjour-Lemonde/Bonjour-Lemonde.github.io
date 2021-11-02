@@ -217,6 +217,7 @@ pre:hover::-webkit-scrollbar-thumb:hover,
   margin-left: 8px;
 }
 #l_main .l_content .widget {
+  margin-top: 10px;
   margin-bottom: 8px;
   background: #fff;
   border-radius: 10px;
