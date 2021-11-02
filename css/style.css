@@ -1062,7 +1062,7 @@ pre:hover::-webkit-scrollbar-thumb:hover,
 }
 @media (max-width: 551px) {
   .post-detail-header {
-    height: 360px;
+    height: 60px;
     text-align: left;
     line-height: 2;
   }
