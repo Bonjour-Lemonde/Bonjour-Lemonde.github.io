@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html>
+  <!-- meta/link... -->
+  
+
+
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+  <title>总结主题美化 | Ying</title>
+
+  <link rel="icon" type="image/jpeg" href="https://s2.loli.net/2022/01/20/siYVJLFrAdN5h2o.jpg">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
+  <link href="https://cdn.jsdelivr.net/gh/inkss/fontawesome@5.15.3/css/all.min.css" rel="stylesheet">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/animate.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/js/fancybox/jquery.fancybox.min.css">
+
+  
+  
+  <style>
+        @media (max-width: 992px) {
+            #waifu {
+                display: none;
+            }
+        }
+    </style>
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+    
+
+    <!-- import link -->
+    
+        
+            
+        
+            
+        
+    
+    <!-- import script -->
+    
+        
+            
+        
+            
+        
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  
+  <!-- 依赖于jquery和vue -->
+  <script src="/js/jquery3.5.1.js"></script>
+  <script src="/js/vue2.6.11.js"></script>
+  
+  <body>
+    <!-- 预加载动画 -->
+    <!-- 页面预加载动画 -->
+
+<div id='loader'>
+  <link rel="stylesheet" href="/js/loaded/index.css" >
+  <div class="loading-left-bg"></div>
+  <div class="loading-right-bg"></div>
+  <div class="spinner-box">
+    <div class="configure-border-1">
+      <div class="configure-core"></div>
+    </div>
+    <div class="configure-border-2">
+      <div class="configure-core"></div>
+    </div>
+    <div class="loading-word">loading...</div>
+  </div>
+</div>
+
+<script>
+  var endLoading = function () {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loader').classList.add("loading");
+  }
+  window.addEventListener('DOMContentLoaded',endLoading);
+  
+</script>
+
+    
+    <!-- 判断是否为暗黑风格 -->
+    <!-- 判断是否为黑夜模式 -->
+<script>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }
+</script>
+
+    <!-- 头部导航等 -->
+    
+<header class="header " id="navHeader"
+  style="position: fixed;
+  left: 0; top: 0; z-index: 10;width: 100%;"
+>
+  <div class="header-content">
+    <div class="bars">
+      <div id="appDrawer" class="sidebar-image">
+  <div class="drawer-box-icon">
+    <i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i>
+  </div>
+  
+  <transition name="fade">
+    <div class="drawer-box_mask" v-cloak style="display: none;" v-show="visible" @click.self="cancelDialogDrawer">
+    </div>
+  </transition>
+  <div class="drawer-box" :class="{'active': visible}">
+    <div class="drawer-box-head bg-color">
+      <img class="drawer-box-head_logo lazyload placeholder" src="https://s2.loli.net/2022/01/20/siYVJLFrAdN5h2o.jpg" class="lazyload placeholder" data-srcset="https://s2.loli.net/2022/01/20/siYVJLFrAdN5h2o.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="logo">
+      <h3 class="drawer-box-head_title">Ying</h3>
+      <h5 class="drawer-box-head_desc"></h5>
+    </div>
+    
+    <div class="drawer-box-content">
+      <ul class="drawer-box-content_menu">
+        
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/" class="drawer-menu-item-link">
+                  
+                  <span class="name">Home</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(1)">
+                  <span>
+                    
+                    <span class="name">Life</span>
+                  </span>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(1)}" aria-hidden="true"></i>
+                </a>
+                <ul class="drawer-sub-menu" v-if="isOpen(1)">
+                  
+                  <li>
+                    <a href="/bookshelf">
+                      
+                      <span>bookshelf</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+        
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })
+</script>
+
+    </div>
+    <div class="blog-title" id="author-avatar">
+      
+        <div class="avatar">
+          <img src="https://s2.loli.net/2022/01/20/siYVJLFrAdN5h2o.jpg" class="lazyload placeholder" data-srcset="https://s2.loli.net/2022/01/20/siYVJLFrAdN5h2o.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="logo">
+        </div>
+      
+      <a href="/" class="logo">Ying</a>
+    </div>
+    <nav class="navbar">
+      <ul class="menu">
+        
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/" class="menu-item-link" title="Home">
+                  
+                  <span class="name">Home</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="javascript:;" class="menu-item-link" title="Life">
+                  
+                  <span class="name">Life</span>
+                  <i class="fas fa-chevron-down arrow" aria-hidden="true"></i>
+                </a>
+                <ul class="sub-menu">
+                  
+                  <li>
+                    <a href="/bookshelf">
+                      
+                      <span>bookshelf</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+        
+      </ul>
+      
+      
+        <div id="appSearch">
+  <div class="search"  @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div>
+  <transition name="fade">
+    <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
+      <div class="message-box animated bounceInDown">
+        <h2>
+          <span>
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="title">Search</span>
+          </span>
+          <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
+        </h2>
+        <form class="site-search-form">
+          <input type="text"
+            placeholder="Please enter keywords"
+            id="local-search-input" 
+            @click="getSearchFile()"
+            class="st-search-input"
+            v-model="searchInput"
+          />
+        </form>
+        <div class="result-wrapper">
+          <div id="local-search-result" class="local-search-result-cls"></div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+<script src="/js/local_search.js"></script>
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })
+</script>
+<!-- 解决刷新页面闪烁问题，可以在元素上添加display: none, 或者用vue.extend方法，详情：https://blog.csdn.net/qq_31393401/article/details/81017912 -->
+<!-- 下面是搜索基本写法 -->
+<!-- <script type="text/javascript" id="local.search.active">
+  var inputArea = document.querySelector("#local-search-input");
+  inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+  inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script> -->
+
+      
+
+    </nav>
+  </div>
+  
+  
+
+    <!-- 当头部导航设置为背景透明的时候  -->
+    
+      <script src="/js/header/index.js" data-pjax></script>
+    
+</header>
+
+    <!-- 需要在上面加载的js -->
+    <script>
+  function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (href, before, media, attributes) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };
+
+</script> 
+
+<!-- 轮播图所需要的js -->
+<script src="/js/swiper/swiper.min.js"></script>
+<script src="/js/swiper/vue-awesome-swiper.js"></script>
+<script src="/js/swiper/swiper.animate1.0.3.min.js"></script>
+
+
+
+<!-- 首页的公告滚动插件的js需要重新加载 -->
+<script src="/js/vue-seamless-scroll/index.js"></script>
+
+<!-- 打字机效果js -->
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+
+
+    <!-- 内容区域 -->
+    <div id="safearea">
+      <main class="main" id="pjax-container" style="margin-top: 0;">
+        
+ <!-- prismjs 代码高亮 -->
+ 
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+  
+<!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://5b0988e595225.cdn.sohucs.com/images/20191226/2c3ee9deddf24e40b0206856044988c6.jpeg')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        总结主题美化
+      </span>
+    </div>
+    
+    
+  </div>
+  
+  
+</div>
+
+
+
+<div class="row justify-position">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <ul>
+<li><a href="#1-%E5%89%8D%E8%A8%80">1. 前言</a></li>
+<li><a href="#2-%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE">2. 主题配置</a><ul>
+<li><a href="#2-1-%E4%B8%BB%E9%A2%98%E9%A2%9C%E8%89%B2">2.1. 主题颜色</a></li>
+<li><a href="#2-2-%E4%B8%BB%E9%A1%B5%E9%9D%A2%E6%A0%87%E9%A2%98">2.2. 主页面标题</a></li>
+<li><a href="#2-3-%E5%AF%BC%E8%88%AA%E6%A0%8F">2.3. 导航栏</a><ul>
+<li><a href="#2-3-1-%E5%AD%97%E4%BD%93%E5%A4%A7%E5%B0%8F">2.3.1. 字体大小</a></li>
+<li><a href="#2-3-2-%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C">2.3.2. 动画效果</a></li>
+<li><a href="#2-3-3-%E5%86%85%E5%AE%B9%E9%97%B4%E8%B7%9D">2.3.3. 内容间距</a></li>
+<li><a href="#2-3-4-%E5%86%85%E5%AE%B9%E4%BD%8D%E7%BD%AE">2.3.4. 内容位置</a></li>
+</ul>
+</li>
+<li><a href="#2-4-%E6%BB%9A%E5%8A%A8%E6%95%88%E6%9E%9C">2.4. 滚动效果</a></li>
+<li><a href="#2-5-%E9%A1%B5%E8%84%9A">2.5. 页脚</a></li>
+<li><a href="#2-6-%E4%B8%BB%E9%A2%98%E8%83%8C%E6%99%AF">2.6. 主题背景</a><ul>
+<li><a href="#2-6-1-%E6%9B%B4%E6%8D%A2%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87">2.6.1. 更换背景图片</a></li>
+<li><a href="#2-6-2-%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA%E6%95%88%E6%9E%9C">2.6.2. 背景图片显示效果</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#3-%E5%A2%9E%E5%8A%A0%E5%8A%9F%E8%83%BD">3. 增加功能</a><ul>
+<li><a href="#3-1-%E7%85%A7%E7%89%87%E5%A2%99">3.1. 照片墙</a></li>
+<li><a href="#3-2-%E5%9C%B0%E5%9B%BE">3.2. 地图</a><ul>
+<li><a href="#3-2-1-%E7%99%BE%E5%BA%A6API">3.2.1. 百度API</a></li>
+<li><a href="#3-2-2-pyecharts">3.2.2. pyecharts</a></li>
+</ul>
+</li>
+<li><a href="#3-3-%E5%8D%9A%E5%AE%A2%E5%86%85%E5%AE%B9">3.3. 博客内容</a><ul>
+<li><a href="#3-3-1-%E7%82%B9%E5%87%BB%E4%B8%8B%E8%BD%BD">3.3.1. 点击下载</a></li>
+<li><a href="#3-3-2-%E9%9F%B3%E9%A2%91%E8%A7%86%E9%A2%91">3.3.2. 音频视频</a></li>
+<li><a href="#3-3-3-%E5%8A%A0%E5%AF%86">3.3.3. 加密</a></li>
+<li><a href="#3-3-4-%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87">3.3.4. 添加图片</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>&emsp;&emsp;本主题是Butterfly，安装教程参考<a target="_blank" rel="noopener" href="https://butterfly.js.org/posts/21cfbf15/">Butterfly 安裝文檔(一) 快速開始</a>。需要说明教程里“把主題文件夾中的 _config.yml 複製到 Hexo 根目錄裏，同時重新命名為 _config.butterfly.yml。”我没有做。<br>&emsp;&emsp;我用来储存博客的文件夹是Hexo Blog。</p>
+<h1 id="2-主题配置"><a href="#2-主题配置" class="headerlink" title="2. 主题配置"></a>2. 主题配置</h1><h2 id="2-1-主题颜色"><a href="#2-1-主题颜色" class="headerlink" title="2.1. 主题颜色"></a>2.1. 主题颜色</h2><p>&emsp;&emsp;颜色的修改都在Hexo Blog\themes\butterfly_config.yml中，Theme color for customize栏目里。取消下面三行代码的注释，并修改main的颜色，这个颜色是浅灰色。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">theme_color:</span><br><span class="line">  enable: true</span><br><span class="line">  main: &quot;#C4C4C4&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="2-2-主页面标题"><a href="#2-2-主页面标题" class="headerlink" title="2.2. 主页面标题"></a>2.2. 主页面标题</h2><p>&emsp;&emsp;标题是主页面图片中间的内容，修改内容在Hexo Blog_config.yml中，Site栏目里的title。<br>&emsp;&emsp;修改标题字体的大小，在Hexo Blog\themes\butterfly\source\css_layout\head.styl里，site-title栏目里，修改为5em。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+minWidth768()</span><br><span class="line">  font-size: 5em</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;主页面可以设置有打字效果的副标题，并调用三方API显示每日一句。修改在Hexo Blog\themes\butterfly_config.yml里，修改代码如下。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">subtitle:</span><br><span class="line">  enable: true</span><br><span class="line">  effect: true</span><br><span class="line">  loop: false</span><br><span class="line">  source: 4</span><br></pre></td></tr></table></figure>
+<h2 id="2-3-导航栏"><a href="#2-3-导航栏" class="headerlink" title="2.3. 导航栏"></a>2.3. 导航栏</h2><p>&emsp;&emsp;导航栏内容的增加参考<a target="_blank" rel="noopener" href="https://butterfly.js.org/posts/4aa8abbe/">Butterfly 安裝文檔(三) 主題配置-1</a>，我做的更改是去掉了icon的显示，注意<code>Archives: /archives/</code>表示的意思是Archives将会显示在网页的导航栏里，archives是它的文件夹名称，在Hexo Blog\source里。</p>
+<h3 id="2-3-1-字体大小"><a href="#2-3-1-字体大小" class="headerlink" title="2.3.1. 字体大小"></a>2.3.1. 字体大小</h3><p>&emsp;&emsp;修改导航栏的字体大小，在Hexo Blog\themes\butterfly\source\css_layout\head.styl里，nav栏目里，修改为2em。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#nav</span><br><span class="line">  position: absolute</span><br><span class="line">  top: 0</span><br><span class="line">  z-index: 90</span><br><span class="line">  display: flex</span><br><span class="line">  flex-wrap: wrap</span><br><span class="line">  align-items: center</span><br><span class="line">  padding: 0 36px</span><br><span class="line">  width: 100%</span><br><span class="line">  height: 60px</span><br><span class="line">  font-size: 2em</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;导航栏左边是副标题，本来想把副标题改的大一点，但是副标题是跟导航栏同步变大，导致导航栏被隐藏了。因此暂时把左侧的副标题不显示。修改在Hexo Blog\themes\butterfly\source\css_layout\head.styl里，site-name栏目里，改为0.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#site-name</span><br><span class="line">  text-shadow: .1rem .1rem .2rem rgba($dark-black, .15)</span><br><span class="line">  font-size: 0em</span><br><span class="line">  cursor: pointer</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;如果不想隐藏副标题，而只是改变它的大小，修改方法同导航栏字体大小。在Hexo Blog\themes\butterfly\source\css_layout\head.styl里，nav栏目里，修改为2em。</p>
+<h3 id="2-3-2-动画效果"><a href="#2-3-2-动画效果" class="headerlink" title="2.3.2. 动画效果"></a>2.3.2. 动画效果</h3><p>&emsp;&emsp;下拉菜单本来有一个箭头，鼠标放上面箭头会旋转，我觉得太花。于是删除箭头。修改在Hexo Blog\themes\butterfly\layout\includes\header\menu_item.pug里，menus_item栏目里。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.menus_item</span><br><span class="line">  a.site-page(href=&#x27;javascript:void(0);&#x27;)</span><br><span class="line">    if label.split(&#x27;||&#x27;)[1]</span><br><span class="line">      i.fa-fw(class=trim(label.split(&#x27;||&#x27;)[1]))</span><br><span class="line">    span=&#x27; &#x27;+ trim(label.split(&#x27;||&#x27;)[0])</span><br><span class="line">    i.fas.fa-chevron-down.expand(class=sidebarChildHide)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;删除其中<code>i.fas.fa-chevron-down.expand(class=sidebarChildHide)</code>一行代码即可。</p>
+<h3 id="2-3-3-内容间距"><a href="#2-3-3-内容间距" class="headerlink" title="2.3.3. 内容间距"></a>2.3.3. 内容间距</h3><p>&emsp;&emsp;导航栏内容的间距太小，修改在Hexo Blog\themes\butterfly\source\css_layout\head.styl里，menus_item栏目里，改为1.2rem.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.menus_item</span><br><span class="line">  position: relative</span><br><span class="line">  display: inline-block</span><br><span class="line">  padding: 0 0 0 1.2rem</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-4-内容位置"><a href="#2-3-4-内容位置" class="headerlink" title="2.3.4. 内容位置"></a>2.3.4. 内容位置</h3><p>&emsp;&emsp;加入本地搜索之后，搜索图标展示在了导航栏内容的最左边，希望放在最右边，修改在Hexo blog_Bonjour\themes\butterfly\layout\includes\header\nav.pug里，将两块代码区域对调，这两块代码分别控制着menu_item和search-button.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#menus</span><br><span class="line">  !=partial(&#x27;includes/header/menu_item&#x27;, &#123;&#125;, &#123;cache: true&#125;) #注释：先编译menu_item</span><br><span class="line">  if (theme.algolia_search.enable || theme.local_search.enable) #注释：再编译search-button</span><br><span class="line">    #search-button</span><br><span class="line">      a.site-page.social-icon.search</span><br><span class="line">        i.fas.fa-search.fa-fw</span><br><span class="line">        span=&#x27; &#x27;+_p(&#x27;search&#x27;)</span><br></pre></td></tr></table></figure>
+<p>为了去掉搜索字体而只留下搜索的图标，只需要将上块代码中的<code>span=&#39; &#39;+_p(&#39;search&#39;)</code>改为<code>span=&#39; &#39;</code>。</p>
+<h2 id="2-4-滚动效果"><a href="#2-4-滚动效果" class="headerlink" title="2.4. 滚动效果"></a>2.4. 滚动效果</h2><p>&emsp;&emsp;滚动效果是一个向下的箭头居于背景图片下方，不喜欢它的上下跳动，所以删除该效果。修改在Hexo Blog\themes\butterfly\source\css_layout\head.styl里，scroll-down-effects栏目里，修改图标大小为0.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.scroll-down-effects</span><br><span class="line">  position: relative</span><br><span class="line">  width: 100%</span><br><span class="line">  color: var(--light-grey)</span><br><span class="line">  font-size: 0px</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-5-页脚"><a href="#2-5-页脚" class="headerlink" title="2.5. 页脚"></a>2.5. 页脚</h2><p>&emsp;&emsp;页脚显示的内容在Hexo Blog\themes\butterfly\layout\includes\footer.pug中，删除以下一段代码。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">    if theme.footer.copyright</span><br><span class="line">.framework-info</span><br><span class="line">  span= _p(&#x27;footer.framework&#x27;) + &#x27; &#x27;</span><br><span class="line">  a(href=&#x27;https://hexo.io&#x27;)= &#x27;Hexo&#x27;</span><br><span class="line">  span.footer-separator |</span><br><span class="line">  span= _p(&#x27;footer.theme&#x27;) + &#x27; &#x27;</span><br><span class="line">  a(href=&#x27;https://github.com/jerryc127/hexo-theme-butterfly&#x27;)= &#x27;Butterfly&#x27;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-6-主题背景"><a href="#2-6-主题背景" class="headerlink" title="2.6. 主题背景"></a>2.6. 主题背景</h2><h3 id="2-6-1-更换背景图片"><a href="#2-6-1-更换背景图片" class="headerlink" title="2.6.1. 更换背景图片"></a>2.6.1. 更换背景图片</h3><p>&emsp;&emsp;主题背景图片修改在Hexo Blog\themes\butterfly_config.yml里，Image栏目里，注意这里能修改的是默认主题背景<code>The banner image of home page</code>，archive页面背景，子标签页面背景，子分类页面背景。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">index_img: /img/pic_1.jpg</span><br><span class="line">default_top_img: /img/pic_1.jpg</span><br><span class="line">archive_img: /img/pic_2.jpg</span><br><span class="line">tag_img: /img/pic_5.jpg</span><br><span class="line">tag_per_img: </span><br><span class="line">category_img: /img/pic_4.jpg</span><br><span class="line">category_per_img: </span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;其中的img文件夹位于Hexo Blog\themes\butterfly\source中，可自行更改，但必须以source文件夹为起使索引。<br>&emsp;&emsp;其他页面背景（标签/分类/链接/关于/列表内的照片电影和音乐）都在各自的index.md中设置。例如list里的movie的md文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: movie</span><br><span class="line">date: 2018-06-07 22:17:49</span><br><span class="line">updated:</span><br><span class="line">type: &quot;movie&quot;</span><br><span class="line">comments:</span><br><span class="line">description:</span><br><span class="line">keywords:</span><br><span class="line">top_img: /img_post/pic_3.jpg</span><br><span class="line">mathjax:</span><br><span class="line">katex:</span><br><span class="line">aside:</span><br><span class="line">aplayer:</span><br><span class="line">highlight_shrink:</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;其中的img_post文件夹位于Hexo Blog\source中，可自行更改，但必须以source文件夹为起使索引。</p>
+<h3 id="2-6-2-背景图片显示效果"><a href="#2-6-2-背景图片显示效果" class="headerlink" title="2.6.2. 背景图片显示效果"></a>2.6.2. 背景图片显示效果</h3><p>&emsp;&emsp;主页的背景图片是固定的，不随着页面滑动，其他页面也修改成该效果。修改在Hexo Blog\themes\butterfly\source\css_layout\head.styl里，page栏目里。添加<code>background-attachment: fixed</code>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// page</span><br><span class="line">  &amp;.not-home-page</span><br><span class="line">    height: 20rem</span><br><span class="line">    background-attachment: fixed</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-增加功能"><a href="#3-增加功能" class="headerlink" title="3. 增加功能"></a>3. 增加功能</h1><h2 id="3-1-照片墙"><a href="#3-1-照片墙" class="headerlink" title="3.1. 照片墙"></a>3.1. 照片墙</h2><p>&emsp;&emsp;照片页面有两种设计：一是显示图库的缩略图，点击进入图库，出现图库的所有图片；二是直接显示所有图片。都是采用html的写法。<br>&emsp;&emsp;图库的缩略图格式如下。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Photo</span><br><span class="line">date: 2018-06-07 22:17:49</span><br><span class="line">type: &quot;photo&quot;</span><br><span class="line">---</span><br><span class="line">&lt;div class=&quot;gallery-group-main&quot;&gt;</span><br><span class="line">&#123;% galleryGroup &#x27;OH MY GIRL&#x27; &#x27;關於OH MY GIRL的圖片&#x27; &#x27;/gallery/ohmygirl&#x27; https://i.loli.net/2019/12/25/hOqbQ3BIwa6KWpo.jpg %&#125;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;其中type可以随意命名，加个s也没问题，改成gallery也没问题。目前不知道其用处。<code>&#39;OH MY GIRL&#39;</code>是图库标题，<code>&#39;關於OH MY GIRL的圖片&#39;</code>是注释，鼠标放在缩略图上才会显示，<code>&#39;/gallery/ohmygirl&#39;</code>是图库的照片的存放位置。位于Hexo Blog\source中。ohmygirl文件夹中也创建一个index.md。修改如下。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Photo</span><br><span class="line">date: 2018-06-07 22:17:49</span><br><span class="line">type: &quot;photo&quot;</span><br><span class="line">---</span><br><span class="line">&#123;% gallery %&#125;</span><br><span class="line">![](https://i.loli.net/2019/12/25/Fze9jchtnyJXMHN.jpg)</span><br><span class="line">![](https://i.loli.net/2019/12/25/ryLVePaqkYm4TEK.jpg)</span><br><span class="line">&#123;% endgallery %&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;其中一个网址是一张照片的链接。</p>
+<h2 id="3-2-地图"><a href="#3-2-地图" class="headerlink" title="3.2. 地图"></a>3.2. 地图</h2><h3 id="3-2-1-百度API"><a href="#3-2-1-百度API" class="headerlink" title="3.2.1. 百度API"></a>3.2.1. 百度API</h3><p>&emsp;&emsp;插入自己进行标注的地图。按照<a target="_blank" rel="noopener" href="https://blog.kuretru.com/posts/7a624fc3/">在网页中嵌入百度地图</a>进行，采用的是“另一种 iframe 引用方式，不过此时就不能使用 asset_path 标签了：”这种方式，因为另一种方式运行不成功。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% iframe /map.no-render.html 100% 420px %&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;其中map.no-render.html存放在Hexo Blog\source中，可自行更改，但必须以source文件夹为起使索引。</p>
+<h3 id="3-2-2-pyecharts"><a href="#3-2-2-pyecharts" class="headerlink" title="3.2.2. pyecharts"></a>3.2.2. pyecharts</h3><p>&emsp;&emsp;插入自己进行标注的地图。按照<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/83231415">干货 | 使用pyecharts绘制交互式动态地图</a>进行，按照步骤运行测试代码。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">from example.commons import Faker </span><br><span class="line">from pyecharts import options as opts </span><br><span class="line">from pyecharts.charts import Geo </span><br><span class="line">from pyecharts.globals import ChartType, SymbolType</span><br><span class="line">from pyecharts.charts import Map</span><br><span class="line"></span><br><span class="line">c = (</span><br><span class="line">    Geo()</span><br><span class="line">    .add_schema(maptype=&quot;world&quot;)</span><br><span class="line">    # .add(&quot;geo&quot;, [list(z) for z in zip([&#x27;河南&#x27;], [22])])</span><br><span class="line">    .add_coordinate(&#x27;TEST&#x27;, -1.023194, 7.946527)</span><br><span class="line">    .set_series_opts(label_opts=opts.LabelOpts(is_show=False))</span><br><span class="line">    .set_global_opts(</span><br><span class="line">        visualmap_opts=opts.VisualMapOpts(),</span><br><span class="line">        title_opts=opts.TitleOpts(title=&quot;Geo-基本示例&quot;),</span><br><span class="line">    )</span><br><span class="line">)</span><br><span class="line">c.render()# 输出html格式</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;但是可能报错，根据<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41228218/article/details/91350196">from example.commons import Faker找不到example解决</a>的提示，安装程序的代码应该如下。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pyecharts==1.0</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;再次运行就能成功了。接下来考虑使用geo模块标注世界地图，必须输入地点的经纬度数据，尝试过直接把国家名称写到list里，不行。于是自己写了以下代码。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">from example.commons import Faker </span><br><span class="line">from pyecharts import options as opts </span><br><span class="line">from pyecharts.charts import Geo </span><br><span class="line">from pyecharts.globals import ChartType, SymbolType</span><br><span class="line">from pyecharts.charts import Map</span><br><span class="line"></span><br><span class="line">geo = Geo()</span><br><span class="line">geo.add_schema(maptype=&quot;world&quot;) </span><br><span class="line">geo.add_coordinate(&#x27;TEST&#x27;, -1.023194, 7.946527) # 输入一个名为TEST的地址</span><br><span class="line">geo.add(&quot;geo&quot;, [list(z) for z in zip([&#x27;TEST&#x27;], [22])]) # 把TEST放在列表里，加到地图里</span><br><span class="line">geo.set_series_opts(label_opts=opts.LabelOpts(is_show=False))</span><br><span class="line">geo.set_global_opts(visualmap_opts=opts.VisualMapOpts(),title_opts=opts.TitleOpts(title=&quot;Geo-基本示例&quot;))</span><br><span class="line"></span><br><span class="line">geo.render()# 显示地图</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;运行之后就可以生成一个名为render.html的文件。下面的步骤跟百度API相似，本质都是把一个html展示到网页上。注意修改width为100%。并把render.html改为map.no-render.html放在Hexo Blog\source中，注意map可以改，但是.no-render.html不能改，因为Hexo Blog_config.yml中定义了这种格式为不用渲染的格式。并在相应的md文档中输入如下。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% iframe /map.no-render.html 100% 420px %&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-3-博客内容"><a href="#3-3-博客内容" class="headerlink" title="3.3. 博客内容"></a>3.3. 博客内容</h2><h3 id="3-3-1-点击下载"><a href="#3-3-1-点击下载" class="headerlink" title="3.3.1. 点击下载"></a>3.3.1. 点击下载</h3><p>&emsp;&emsp;只需要在post的md文件中写入<code>[点击下载](https://cloud.tsinghua.edu.cn/f/40c110453aa744579ade/?dl=1 &quot;主题设置文件&quot;)</code>，链接的是文件所在的地址，可以是清华seafile。</p>
+<h3 id="3-3-2-音频视频"><a href="#3-3-2-音频视频" class="headerlink" title="3.3.2. 音频视频"></a>3.3.2. 音频视频</h3><p>&emsp;&emsp;音频和视频的插入在<a target="_blank" rel="noopener" href="https://lovelijunyi.gitee.io/posts/743c.html">hexo文章插入多媒体</a>中总结很全。butterfly的官方网站也有。<br>&emsp;&emsp;需要注意的是采用直接插入的方法时，<code>width</code>设置为100%，才能适应手机屏幕的显示。例如插入音频，直接在post的md文件中输入如下。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=100% height=86 src=&quot;//music.163.com/outchain/player?type=2&amp;id=29808783&amp;auto=1&amp;height=66&quot;&gt;&lt;/iframe&gt;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;例如插入视频，直接在post的md文件中输入如下。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe </span><br><span class="line">    width=&quot;100%&quot; </span><br><span class="line">    height=&quot;450&quot; </span><br><span class="line">    src=&#x27;https://player.youku.com/embed/XNDE5NjYzOTg0OA==&#x27;</span><br><span class="line">    frameborder=&quot;0&quot; </span><br><span class="line">    allowfullscreen&gt;</span><br><span class="line">&lt;/iframe&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-3-加密"><a href="#3-3-3-加密" class="headerlink" title="3.3.3. 加密"></a>3.3.3. 加密</h3><p>&emsp;&emsp;按照<a target="_blank" rel="noopener" href="https://leehoward.cn/2019/10/26/Hexo%E5%AF%B9%E6%96%87%E7%AB%A0%E8%BF%9B%E8%A1%8C%E5%8A%A0%E5%AF%86/#%E7%89%B9%E6%80%A7">Hexo对文章进行加密</a>进行。只测试过对单个博客进行加密。<br>&emsp;&emsp;另一种加密方式是<a target="_blank" rel="noopener" href="https://blog.garryde.com/archives/37712.html">隐藏文章链接</a>。使用之后认为比前一种方式更方便。</p>
+<h3 id="3-3-4-添加图片"><a href="#3-3-4-添加图片" class="headerlink" title="3.3.4. 添加图片"></a>3.3.4. 添加图片</h3><p>&emsp;&emsp;添加图片</p>
+
+      </div>
+      <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/hexo%E5%BB%BA%E7%AB%99/" class="">
+              hexo建站
+            </a>
+          
+            <a href="/tags/butterfly%E4%B8%BB%E9%A2%98/" class="">
+              butterfly主题
+            </a>
+          
+        </div>
+        
+      </div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+  
+  <div class="post-nav-prev post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://5b0988e595225.cdn.sohucs.com/images/20191226/2c3ee9deddf24e40b0206856044988c6.jpeg" class="lazyload placeholder" data-srcset="https://5b0988e595225.cdn.sohucs.com/images/20191226/2c3ee9deddf24e40b0206856044988c6.jpeg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
+    </div>
+    <a href="/2021/04/18/vscode%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" class="post-nav-link">
+      <div class="title">
+        <i class="fas fa-angle-left"></i> Prev:
+        <div class="title-text">VScode使用教程</div>
+      </div>
+      
+      <!-- <div class="content">
+        
+插入当前时间
+常用操作
+输出为pdf
+markdown常用格式及其用途
+主动控制换行
+
+插入当前时间
+在一个md文件中
+      </div> -->
+    </a>
+  </div>
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://www.qitaijk.cn/public/uploads/images/20181005/1538673197387735.png" class="lazyload placeholder" data-srcset="https://www.qitaijk.cn/public/uploads/images/20181005/1538673197387735.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt="">
+    </div>
+    <a href="/2020/11/04/%E4%BE%9D%E8%B5%96%E4%BA%8E%E8%9B%8B%E7%99%BD%E5%85%83%E4%BB%B6%E9%9D%9E%E6%AD%A3%E4%BA%A4%E6%80%A7%E7%9A%84%E5%93%BA%E4%B9%B3%E5%8A%A8%E7%89%A9%E7%BB%86%E8%83%9E%E5%A4%9A%E7%A8%B3%E6%80%81%E6%8E%A7%E5%88%B6%E5%99%A8/" class="post-nav-link">
+      <div class="title">
+        Next: <i class="fas fa-angle-right"></i>
+        <div class="title-text">哺乳动物细胞多稳态控制器</div>
+      </div>
+      <!-- <div class="content">
+        &emsp;&emsp;合成生物学总结出了如正交性、模块化、组合性等元件的理想性质，为基因调控网络的设计提供了底层设计思
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+
+    <!-- 分享 -->
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <div id="gitment-container"></div>
+
+    
+  </div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <!-- 文章详情页右侧目录 -->
+
+  <div class="toc-aside">
+    <div class="toc-main">
+      <div class="toc-aside-title">
+        <i class="fas fa-list-ul" aria-hidden="true"></i><span>catalog</span>
+        
+          <div class="toc-open-close">catalog</div>
+        
+      </div>
+      <div class="toc-content">
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 手机端目录按钮 -->
+  <div id="toc-mobile-btn">
+    <i class="fas fa-list-ul" aria-hidden="true"></i>
+  </div>
+  <!-- js在scripts目录下的的toc.ejs里面 -->
+  
+
+  <script>
+    function openBtnClickFn () {
+      let openOrCloseBtn = $('.toc-aside .toc-aside-title .toc-open-close');
+      let open = eval('' || 'true');
+      openOrCloseBtn.click(function() {
+        if (open === true) {
+          $(".toc-aside").css({'width': 0, 'padding': 0});
+          $(".toc-content").css({'width': 0});
+          $(".toc-aside-title span, .toc-aside-title i").css({'display': 'none'});
+          $(".main-content").css({'width': '75%', 'margin': '10px auto'});
+          open = false;
+        } else {
+          $(".toc-aside").css({'width': '300px', 'padding': '0 10px'});
+          $(".toc-content").css({'width': '300px'});
+          $(".toc-aside-title span, .toc-aside-title i").css({'display': 'inline-block'});
+          $(".main-content").css({'width': '65%', 'margin-right': '10px', 'margin-left': 'calc(35% - 350px)'});
+          open = true;
+        }
+      });
+    };
+    openBtnClickFn();
+    document.addEventListener('pjax:complete', function () {
+      openBtnClickFn();
+    })
+    
+  </script>
+
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
+
+      </main>
+    </div>
+
+    <!-- 页脚 -->
+    
+  
+  <div class="footer bg-color">
+    <div class="footer-main">
+      
+        
+          <div class="footer-copyright">
+            <p>Copyright © 2021 - 2022</p>
+
+          </div>
+        
+      
+        
+          <div class="footer-custom">
+            
+              <div><br></div>
+            
+              <div><p>自强不息 厚德载物 | 自由精神 独立思想</p>
+</div>
+            
+          </div>
+        
+      
+    </div>
+  </div>
+
+
+
+    <!-- 渲染暗黑按钮 -->
+    
+      <div class="dark">
+  <div class="dark-content">
+    <i class="fas fa-moon" aria-hidden="true"></i>
+    <!-- <span>关灯</span> -->
+  </div>
+  
+</div>
+
+<script>
+  $(function() {
+    let isDark = JSON.parse(localStorage.getItem('dark'))  || JSON.parse('false');
+    if (isDark) {
+      $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+    }
+    $('.dark').click(function() {
+      if ($(document.body).is('.darkModel')) {
+        $(document.body).removeClass('darkModel');
+        localStorage.setItem('dark', false);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      } else {
+        $(document.body).addClass('darkModel');
+        localStorage.setItem('dark', true);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      }
+    })
+  })
+</script>
+    
+    <!-- 渲染回到顶部按钮 -->
+    
+      <div class="goTop top-btn-color" pointer>
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script src="/js/goTop.js"></script>
+
+    
+    <!-- 渲染左下角音乐播放器 -->
+    
+
+    <!-- 图片放大 -->
+    
+      <script src="/js/fancybox/jquery.fancybox.min.js"></script>
+    
+
+    <!-- 百度解析 -->
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <!-- 背景彩带 -->
+    
+
+    <script src="/js/utils/index.js"></script>
+    <script src="/js/app.js" data-pjax></script>
+    
+    <!-- 文章目录所需js -->
+<link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script>
+
+<script>
+  var headerEl = 'h1,h2, h3, h4,h5,h6',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -80,
+    headingsOffset: -($(window).height() * 0.4 - 45),
+    positionFixedSelector: '.toc-main',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 100) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('toc-aside')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  }
+</style> 
+
+<!-- 渲染issues标签里的内容 -->
+<script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/issues/index.js');
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof IssuesAPI == "undefined") {
+      loadIssuesJS();
+    }
+  })
+</script>
+
+<!-- 输入框打字特效 -->
+<!-- 输入框打字特效 -->
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;  // 打开随机颜色特效
+    POWERMODE.shake = false;    // 关闭输入框抖动
+    document.body.addEventListener('input', POWERMODE);//监听打字事件
+  </script>
+
+
+<!-- markdown代码一键复制功能 -->
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/v-plugs-ayu/lib/ayu.css">
+  <script src="https://cdn.jsdelivr.net/npm/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <script src="/js/clipboard/clipboard.min.js"></script>
+  <div id="appCopy">
+  </div>
+  <script data-pjax>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = 'copy';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "代码已复制，请遵守相关授权协议。",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+  
+
+<!-- 图片懒加载 -->
+<script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+<!-- 卡片滚动动画 -->
+   
+
+<!-- 评论所需js -->
+
+  
+    <script type="text/javascript">
+  var utteranceCommon = {};
+
+  function check_utterance() {
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    if (isDark) {
+      utteranceCommon.Theme = 'github-dark';
+    } else {
+      utteranceCommon.Theme = 'github-light';
+    }
+
+    return document.getElementById("gitment-container");
+  }
+  comment_el = '#gitment-container';
+  load_utterance = function () {
+    if ($(comment_el).length) {
+      // 匿名函数，防止污染全局变量
+      const HEAD = check_utterance();
+
+      var utterances = document.createElement('script');
+      utterances.type = 'text/javascript';
+      utterances.async = true;
+      utterances.setAttribute('issue-term', 'pathname')
+      utterances.setAttribute('theme', utteranceCommon.Theme)
+      utterances.setAttribute('repo', '')
+      utterances.crossorigin = 'anonymous';
+      utterances.src = 'https://utteranc.es/client.js';
+      // content 是要插入评论的地方
+      document.getElementById('gitment-container').appendChild(utterances);
+
+    }
+  }
+
+  function dark_utterance() {
+    const HEAD = check_utterance();
+    if (!HEAD) return;
+    const message = {
+      type: 'set-theme',
+      theme: utteranceCommon.Theme
+    };
+    const utteranceIframe = document.querySelector('iframe');
+    utteranceIframe.contentWindow.postMessage(message, 'https://utteranc.es');
+  }
+
+  $(document).ready(load_utterance);
+  document.addEventListener('pjax:complete', function () {
+    load_utterance();
+  });
+
+  $('.dark').click(function () {
+    setTimeout(() => {
+      dark_utterance();
+    });
+  })
+
+</script>
+
+<style>
+  .utterances {
+    max-width: inherit !important;
+  }
+</style>
+  
+
+
+<!-- 鼠标点击特效 -->
+<!-- 爱心点击 -->
+
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
+
+
+    <!-- pjax -->
+    
+
+<!-- pjax -->
+
+
+  <script src="/js/pjax@0.2.8/index.js"></script>
+  
+    <!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <div class="loading-circle"><div id="loader-circle"></div></div>
+    <script>
+      window.ShowLoading = function() {
+        $(".loading-circle").css("display", "block");
+      };
+      window.HideLoading = function() {
+        $(".loading-circle").css("display", "none");
+      }
+    </script>
+  
+	<script>
+    document.addEventListener('pjax:complete', function () {
+      window.HideLoading();
+    })
+    document.addEventListener('pjax:send', function () {
+      window.ShowLoading();
+    })
+    document.addEventListener('pjax:error', function () {
+      window.HideLoading();
+    })
+	</script>
+</div>
+
+  
+
+  <script>
+    var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })
+  </script>
+
+
+
+  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/tororo.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html>
+  <!-- meta/link... -->
+  
+
+
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+  <title>真核合成生物学 | Ying</title>
+
+  <link rel="icon" type="image/jpeg" href="https://s2.loli.net/2022/01/20/siYVJLFrAdN5h2o.jpg">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
+  <link href="https://cdn.jsdelivr.net/gh/inkss/fontawesome@5.15.3/css/all.min.css" rel="stylesheet">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/animate.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/js/fancybox/jquery.fancybox.min.css">
+
+  
+  
+  <style>
+        @media (max-width: 992px) {
+            #waifu {
+                display: none;
+            }
+        }
+    </style>
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+    
+
+    <!-- import link -->
+    
+        
+            
+        
+            
+        
+    
+    <!-- import script -->
+    
+        
+            
+        
+            
+        
+    
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  
+  <!-- 依赖于jquery和vue -->
+  <script src="/js/jquery3.5.1.js"></script>
+  <script src="/js/vue2.6.11.js"></script>
+  
+  <body>
+    <!-- 预加载动画 -->
+    <!-- 页面预加载动画 -->
+
+<div id='loader'>
+  <link rel="stylesheet" href="/js/loaded/index.css" >
+  <div class="loading-left-bg"></div>
+  <div class="loading-right-bg"></div>
+  <div class="spinner-box">
+    <div class="configure-border-1">
+      <div class="configure-core"></div>
+    </div>
+    <div class="configure-border-2">
+      <div class="configure-core"></div>
+    </div>
+    <div class="loading-word">loading...</div>
+  </div>
+</div>
+
+<script>
+  var endLoading = function () {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loader').classList.add("loading");
+  }
+  window.addEventListener('DOMContentLoaded',endLoading);
+  
+</script>
+
+    
+    <!-- 判断是否为暗黑风格 -->
+    <!-- 判断是否为黑夜模式 -->
+<script>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }
+</script>
+
+    <!-- 头部导航等 -->
+    
+<header class="header " id="navHeader"
+  style="position: fixed;
+  left: 0; top: 0; z-index: 10;width: 100%;"
+>
+  <div class="header-content">
+    <div class="bars">
+      <div id="appDrawer" class="sidebar-image">
+  <div class="drawer-box-icon">
+    <i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i>
+  </div>
+  
+  <transition name="fade">
+    <div class="drawer-box_mask" v-cloak style="display: none;" v-show="visible" @click.self="cancelDialogDrawer">
+    </div>
+  </transition>
+  <div class="drawer-box" :class="{'active': visible}">
+    <div class="drawer-box-head bg-color">
+      <img class="drawer-box-head_logo lazyload placeholder" src="https://s2.loli.net/2022/01/20/siYVJLFrAdN5h2o.jpg" class="lazyload placeholder" data-srcset="https://s2.loli.net/2022/01/20/siYVJLFrAdN5h2o.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="logo">
+      <h3 class="drawer-box-head_title">Ying</h3>
+      <h5 class="drawer-box-head_desc"></h5>
+    </div>
+    
+    <div class="drawer-box-content">
+      <ul class="drawer-box-content_menu">
+        
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/" class="drawer-menu-item-link">
+                  
+                  <span class="name">Home</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(1)">
+                  <span>
+                    
+                    <span class="name">Life</span>
+                  </span>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(1)}" aria-hidden="true"></i>
+                </a>
+                <ul class="drawer-sub-menu" v-if="isOpen(1)">
+                  
+                  <li>
+                    <a href="/bookshelf">
+                      
+                      <span>bookshelf</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+        
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })
+</script>
+
+    </div>
+    <div class="blog-title" id="author-avatar">
+      
+        <div class="avatar">
+          <img src="https://s2.loli.net/2022/01/20/siYVJLFrAdN5h2o.jpg" class="lazyload placeholder" data-srcset="https://s2.loli.net/2022/01/20/siYVJLFrAdN5h2o.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="logo">
+        </div>
+      
+      <a href="/" class="logo">Ying</a>
+    </div>
+    <nav class="navbar">
+      <ul class="menu">
+        
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/" class="menu-item-link" title="Home">
+                  
+                  <span class="name">Home</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="javascript:;" class="menu-item-link" title="Life">
+                  
+                  <span class="name">Life</span>
+                  <i class="fas fa-chevron-down arrow" aria-hidden="true"></i>
+                </a>
+                <ul class="sub-menu">
+                  
+                  <li>
+                    <a href="/bookshelf">
+                      
+                      <span>bookshelf</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+        
+      </ul>
+      
+      
+        <div id="appSearch">
+  <div class="search"  @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div>
+  <transition name="fade">
+    <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
+      <div class="message-box animated bounceInDown">
+        <h2>
+          <span>
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="title">Search</span>
+          </span>
+          <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
+        </h2>
+        <form class="site-search-form">
+          <input type="text"
+            placeholder="Please enter keywords"
+            id="local-search-input" 
+            @click="getSearchFile()"
+            class="st-search-input"
+            v-model="searchInput"
+          />
+        </form>
+        <div class="result-wrapper">
+          <div id="local-search-result" class="local-search-result-cls"></div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+<script src="/js/local_search.js"></script>
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })
+</script>
+<!-- 解决刷新页面闪烁问题，可以在元素上添加display: none, 或者用vue.extend方法，详情：https://blog.csdn.net/qq_31393401/article/details/81017912 -->
+<!-- 下面是搜索基本写法 -->
+<!-- <script type="text/javascript" id="local.search.active">
+  var inputArea = document.querySelector("#local-search-input");
+  inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+  inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script> -->
+
+      
+
+    </nav>
+  </div>
+  
+  
+
+    <!-- 当头部导航设置为背景透明的时候  -->
+    
+      <script src="/js/header/index.js" data-pjax></script>
+    
+</header>
+
+    <!-- 需要在上面加载的js -->
+    <script>
+  function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (href, before, media, attributes) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };
+
+</script> 
+
+<!-- 轮播图所需要的js -->
+<script src="/js/swiper/swiper.min.js"></script>
+<script src="/js/swiper/vue-awesome-swiper.js"></script>
+<script src="/js/swiper/swiper.animate1.0.3.min.js"></script>
+
+
+
+<!-- 首页的公告滚动插件的js需要重新加载 -->
+<script src="/js/vue-seamless-scroll/index.js"></script>
+
+<!-- 打字机效果js -->
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+
+
+    <!-- 内容区域 -->
+    <div id="safearea">
+      <main class="main" id="pjax-container" style="margin-top: 0;">
+        
+ <!-- prismjs 代码高亮 -->
+ 
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+  
+<!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://5b0988e595225.cdn.sohucs.com/images/20191226/2c3ee9deddf24e40b0206856044988c6.jpeg')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        真核合成生物学
+      </span>
+    </div>
+    
+    
+  </div>
+  
+  
+</div>
+
+
+
+<div class="row justify-position">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <ul>
+<li><a href="#1-%E7%9C%9F%E6%A0%B8%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E7%89%B9%E7%82%B9">1. 真核系统的定义和特点</a><ul>
+<li><a href="#1-1-%E5%9F%BA%E6%9C%AC%E5%8D%95%E4%BD%8D-%E7%BB%86%E8%83%9E">1.1. 基本单位：细胞</a></li>
+<li><a href="#1-2-%E5%A4%9A%E7%BB%86%E8%83%9E">1.2. 多细胞</a><ul>
+<li><a href="#1-2-1-%E5%88%86%E5%8C%96">1.2.1. 分化</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#2-%E7%96%BE%E7%97%85%E7%9A%84%E4%BA%A7%E7%94%9F%E6%9C%BA%E5%88%B6">2. 疾病的产生机制</a><ul>
+<li><a href="#2-1-%E7%BB%86%E8%83%9E%E5%8A%9F%E8%83%BD%E7%9A%84%E7%A0%B4%E5%9D%8F">2.1. 细胞功能的破坏</a></li>
+</ul>
+</li>
+<li><a href="#3-%E7%A0%94%E7%A9%B6%E7%9C%9F%E6%A0%B8%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%89%8B%E6%AE%B5">3. 研究真核系统的手段</a></li>
+<li><a href="#4-%E7%9C%9F%E6%A0%B8%E7%9A%84%E5%90%88%E6%88%90%E7%94%9F%E7%89%A9%E5%AD%A6%E8%BF%9B%E5%B1%95">4. 真核的合成生物学进展</a><ul>
+<li><a href="#4-1-%E7%9C%9F%E6%A0%B8%E7%9A%84%E5%9F%BA%E5%9B%A0%E8%B0%83%E6%8E%A7%E5%85%83%E4%BB%B6%E5%8F%8A%E6%9C%BA%E5%88%B6">4.1. 真核的基因调控元件及机制</a></li>
+<li><a href="#4-2-%E5%9F%BA%E4%BA%8E%E7%9C%9F%E6%A0%B8%E5%9F%BA%E5%9B%A0%E8%B0%83%E6%8E%A7%E7%9A%84%E6%95%B0%E5%AD%A6%E6%A8%A1%E5%9E%8B">4.2. 基于真核基因调控的数学模型</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="1-真核系统的定义和特点"><a href="#1-真核系统的定义和特点" class="headerlink" title="1. 真核系统的定义和特点"></a>1. 真核系统的定义和特点</h1><h2 id="1-1-基本单位：细胞"><a href="#1-1-基本单位：细胞" class="headerlink" title="1.1. 基本单位：细胞"></a>1.1. 基本单位：细胞</h2><p>&emsp;&emsp;Hooke首先观测并命名了细胞（根据细胞形态像僧人所住的房屋Cell）<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Micrographia">见文章Micrographia</a>。但他对生命是什么并无帮助，因为他认为软木塞里的细胞壁是植物输送营养的通道。这并未反驳亚里士多德关于生命是由水或土等基本元素自发形成的观点<a target="_blank" rel="noopener" href="https://doi.org/10.1038/8964">见文章A unifying concept: the history of cell theory</a>。<br>&emsp;&emsp;推翻亚里士多德观点的论据来自于Lazzaro Spallanzani，他们证实了细胞总是来源于另一个细胞，因此非生命体不能转化为生命体。逐渐形成了Cell Theory，包括三个论点：</p>
+<ol>
+<li>all organisms are composed of one or more cells;</li>
+<li>cells are the basic unit of structure and function in life;这个论点非常强，生命的结构和功能应该是以实现某功能的最小结构为基本单位的，由于实现功能的最小结构需要包括能量、原料、基因，因此细胞是实现功能的最小单位，成立；</li>
+<li>all cells are derived from pre-existing cells.</li>
+</ol>
+<h2 id="1-2-多细胞"><a href="#1-2-多细胞" class="headerlink" title="1.2. 多细胞"></a>1.2. 多细胞</h2><p>&emsp;&emsp;哺乳动物细胞是从受精卵逐渐分化形成的多细胞组织，细胞分化之后也在不断的凋亡。但是细胞的运动也是有规律的，受到细胞内调控的控制或者细胞之间调控因子的控制或者环境的控制。只从动力学的角度来说，物理学家们关注系统运动的稳定性的产生和失去，以解释生命现象为什么是这样，以及还可能是什么样。生物学和生物信息学，也能给出生命现象是这样的一种推测，但生物学缺乏对生命运动的考虑，生物信息学缺乏对普适生命规律的探索。生命为什么运动，运动是随机的还是必然的，使用什么语言来刻画。当然生命的运动根植于分子的热运动中，根植于分子的电荷分布中，但是当聚焦在细胞层次的运动时，分子的电荷分布和热运动就可以粗粒化的处理了。</p>
+<h3 id="1-2-1-分化"><a href="#1-2-1-分化" class="headerlink" title="1.2.1. 分化"></a>1.2.1. 分化</h3><p>&emsp;&emsp;在考虑生命中的问题时，一定要考虑环境的噪声和系统内部的噪声。试想一个控制细胞分化的系统，在外界信号1下表达蛋白1，则分化为细胞1，另一方面还可以分化为细胞2.在外界信号1和2不停的波动的情况下，如果是一个开环的控制，细胞1和细胞2也会不断的随着信号1和2的波动而波动的产生，这与现实的观测不符。因此必然存在一定的控制，而且这个控制一定是能够抗击环境的扰动和内部参数的扰动的。零几年的真核细胞的研究粗糙的从实验和模型上说明了分化必然是受到一定控制的这一观点，可以参考<a target="_blank" rel="noopener" href="https://doi.org/10.1186/1471-2121-7-11">中性粒细胞分化单分子实验</a>，<a target="_blank" rel="noopener" href="https://doi.org/10.1016/j.ydbio.2007.02.036">GATA和PU控制分化的调控网络模型</a>，<a target="_blank" rel="noopener" href="https://doi.org/10.1038/nature06965">祖细胞转录组的异质性控制分化方向</a>。虽然最后一个案例我有点不太相信。<br>&emsp;&emsp;对分化的研究与细胞分类紧密相关。首先要鉴定有哪些种类的细胞，每个种类有什么特点，然后才能明确不同种类的细胞是怎样从一个干细胞中分化出来的。2006年发表的综述还在讨论<a target="_blank" rel="noopener" href="https://doi.org/10.1017/S1464793106007068">人类细胞如何分类</a>，指出以往的分类方法是主观的，比如根据细胞所在的位置，细胞的表达产物，细胞形态进行分类。这不能显式的表现出细胞的进化、发育关系。另一方面也有支序分类法，将所有细胞的共有和特有形状进行分析，那些共有特征较多而特有特征较少的，就是祖，体现进化的突变和又简单到复杂的理论。2017年发表的综述讨论了利用细胞内<a target="_blank" rel="noopener" href="https://doi.org/10.7554/eLife.27041.001">RNA测序数据和蛋白质谱数据对细胞进行分类和发育溯源</a>。RNA测序数据对分类是更全面更理论的新方法，但对于发育溯源，面临几个困境，包括鉴定两种细胞从哪一个祖细胞分化来，捕捉到很快的分化过程，以及分化后的细胞太少导致数据量少，但是他们已经做了时序的RNA测序。确实这个领域属于肯定能成功，但是耗费成本高的领域。关键是有没有必要全做，不全做，就不了解所有的信息，了解了所有的信息，才能抽出其中关键的部分。另一个存在的问题是，细胞内总有噪声，RNA测序数据也有噪声，测出来的不知道是细胞的异质性还是系统误差还是细胞表达的显著差异。真核内的蛋白表达量大概有多少呢？看起来<a target="_blank" rel="noopener" href="https://bionumbers.hms.harvard.edu/files/Protein%20copy%20numbers%20per%20HeLa%20cell.pdf">至少上万</a>，真核细胞内的<a target="_blank" rel="noopener" href="https://bionumbers.hms.harvard.edu/files/Examples%20of%20estimated%20copy%20numbers%20per%20cell.pdf">总蛋白数量</a>在<code>$10^&#123;9&#125;$</code>。<br>&emsp;&emsp;但是真核细胞的表达是非常弥散的。2008年的<a target="_blank" rel="noopener" href="https://doi.org/10.1016/j.cell.2008.09.050">综述</a>总结真核细胞虽然表达量比原核细胞要高，但表达的过程是爆发式的，导致相同环境和相同基因型的细胞表达量也差异很大，差异甚至比大肠杆菌和酵母都大，因为大肠杆菌的爆发式表达并不明显，而酵母中表达量越大噪声越小。但并非所有基因都表现出很大的噪声，跟基因所受到的调控有关，在真核细胞中<a target="_blank" rel="noopener" href="https://doi.org/10.1101/gr.3820805">管家基因表达的噪声较弱</a>，而一些负责<a target="_blank" rel="noopener" href="https://doi.org/10.1038/nature12172">应激线路的基因噪声较强</a>。人为合成的线路中，只改变操作子的串联个数，<a target="_blank" rel="noopener" href="https://doi.org/10.1371/journal.pbio.0040309">就会影响基因的噪声</a>。但这个领域我要跟进一下，我希望明确利用测序数据探讨分化问题是否需要遗传学的知识，也就是说测序数据能在多大程度上给出分化的过程。但是cluster这个方法不是本质上是任意的吗？为什么还会用来做分类呢？也就是说，<strong>从信息的角度去研究动力学，可行吗？</strong><br>&emsp;&emsp;<a target="_blank" rel="noopener" href="https://doi.org/10.1016/j.cell.2016.06.011">体外控制干细胞定向分化</a>到一种特定细胞需要了解诱导到该途径的外界信号和通路，也可能需要抑制干细胞向别的方向进行分化的倾向。促进干细胞向某类细胞分化的因子主要包括TGFβ（转化生长因子-β）, BMP（转化生长因子-β的一类）, FGF, and WNT。例如，TGF-β可以结合到细胞表面的TGF-β受体结合而激活其受体。TGF-β受体是丝氨酸/苏氨酸激酶受体。其信号传递可以通过SMAD信号通路和/或DAXX信号通路。SMAD途径是TGF-β家族进行传递讯息的经典范例。 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%BD%AC%E5%8C%96%E7%94%9F%E9%95%BF%E5%9B%A0%E5%AD%90-%CE%B2">此途径会经过以下步骤进行讯息传递</a>：TGF-β双聚体会结合到 type II 受体，type II受体会吸引并磷酸化type I受体，磷酸化后的type I受体吸引并磷酸化regulated SMAD（R-SMAD），磷酸化后的R-SMAD会结合上common SMAD（coSMAD、SMAD4）并形成异元二聚体（heterodimeric complex），该异元二聚体会进入细胞核中作为多种基因表现的转译因子，包括利用8种途径活化促分裂蛋白质激酶（mitogen-activated protein kinase）的产生，进而引发细胞凋亡。而SMAD途径本身被回馈作用所调控，SMAD6与SMAD7可结合上type I受体，造成该受体无法与R-SMAD结合导致讯息中断。<br>&emsp;&emsp;促进分化的信号传入细胞，细胞内有一套转录调控网络控制着分化信号的解析和执行。例如肌源性调节因子（Myogenic regulatory factors，MRF）是肌发生过程中的关键参与者，其网络的发现已经有<a target="_blank" rel="noopener" href="https://doi.org/10.1177/1535370217749494">30年的历史</a>，该网络是级联的自激活和互激活。该过程能解释分化的不可逆性来源于自激活和互相激活，但多能性并未得到解释。但该网络说明自激活是必要的，并且支持分化时需要<a target="_blank" rel="noopener" href="https://doi.org/10.1101/gad.322818.118">转录因子持续表达的观点</a>。另一方面，对胚胎干细胞（embryonic stem cells，ESC）多能性的研究表明，多能网络的核心是三联体OCT4，SOX2和NANOG，其中OCT4和SOX2作为异二聚体一起调节包括NANOG，OCT4和SOX2在内的多个基因，多能性指干细胞维持干细胞状态的能力，并可以分化为不同种类细胞的能力。维持多能性来源于这三种转录因子的自激活。最近7，8年人们才知道转录因子是如何调控干细胞分化为特定的谱系的（lineage selection）。是通过别的转录因子与维持多能干细胞状态的转录因子<a target="_blank" rel="noopener" href="https://doi.org/10.1016/j.cell.2011.05.017">相互竞争</a>。进一步地，这种竞争从数学模型上被证明能产生<a target="_blank" rel="noopener" href="https://doi.org/10.1016/j.cels.2015.08.001">两个能垒</a>（虽然实验上没有观测到跳跃），从而将细胞状态锁定，符合沃丁顿景观假说（Waddington Landscape），2008年的一篇综述也说明了真核细胞中转录因子的<a target="_blank" rel="noopener" href="https://doi.org/10.1016/j.tibs.2008.02.002">同种多聚化和异种多聚化</a>拥有一定的生物作用。</p>
+<h1 id="2-疾病的产生机制"><a href="#2-疾病的产生机制" class="headerlink" title="2. 疾病的产生机制"></a>2. 疾病的产生机制</h1><h2 id="2-1-细胞功能的破坏"><a href="#2-1-细胞功能的破坏" class="headerlink" title="2.1. 细胞功能的破坏"></a>2.1. 细胞功能的破坏</h2><p>&emsp;&emsp;例如树突状细胞和T细胞的功能改变增加自身免疫疾病的风险<a target="_blank" rel="noopener" href="https://doi.org/10.7554/eLife.27041.001">见关键词dendritic cells</a>；</p>
+<h1 id="3-研究真核系统的手段"><a href="#3-研究真核系统的手段" class="headerlink" title="3. 研究真核系统的手段"></a>3. 研究真核系统的手段</h1><p>&emsp;&emsp;真核系统非常小而且复杂，以时间顺序列举研究真核手段的发展历程：</p>
+<ol>
+<li>光学显微镜，观测细胞以及内部的大型结构，例如细胞核；</li>
+<li>化学染料，对同一个组织内的不同细胞进行分类，例如说明了脑包含多种神经细胞；</li>
+<li>Immunohistochemistry, monoclonal antibodies and Fluorescence-Activated Cell Sorting，探测细胞内蛋白的种类和丰度；</li>
+<li>Fluorescence in situ Hybridization，在染色体上定位某个基因，例如通过检测某个基因的缺失辅助疾病的诊断；</li>
+</ol>
+<h1 id="4-真核的合成生物学进展"><a href="#4-真核的合成生物学进展" class="headerlink" title="4. 真核的合成生物学进展"></a>4. 真核的合成生物学进展</h1><p>&emsp;&emsp;目前研究较为清晰的真核系统包括：造血、免疫、神经、视觉系统<a target="_blank" rel="noopener" href="https://doi.org/10.7554/eLife.27041.001">见关键词hematopoietic</a>。</p>
+<h2 id="4-1-真核的基因调控元件及机制"><a href="#4-1-真核的基因调控元件及机制" class="headerlink" title="4.1. 真核的基因调控元件及机制"></a>4.1. 真核的基因调控元件及机制</h2><p>&emsp;&emsp;真核的启动子包括SFFV,U6,SV4,EF1α。</p>
+<h2 id="4-2-基于真核基因调控的数学模型"><a href="#4-2-基于真核基因调控的数学模型" class="headerlink" title="4.2. 基于真核基因调控的数学模型"></a>4.2. 基于真核基因调控的数学模型</h2>
+      </div>
+      <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/%E5%90%88%E6%88%90%E7%94%9F%E7%89%A9%E5%AD%A6/" class="">
+              合成生物学
+            </a>
+          
+            <a href="/tags/%E7%9C%9F%E6%A0%B8%E7%BB%86%E8%83%9E/" class="">
+              真核细胞
+            </a>
+          
+        </div>
+        
+      </div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+  
+  <div class="post-nav-prev post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://5b0988e595225.cdn.sohucs.com/images/20191226/2c3ee9deddf24e40b0206856044988c6.jpeg" class="lazyload placeholder" data-srcset="https://5b0988e595225.cdn.sohucs.com/images/20191226/2c3ee9deddf24e40b0206856044988c6.jpeg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
+    </div>
+    <a href="/2021/06/01/%E7%94%9F%E5%91%BD%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%99%AA%E5%A3%B0%E6%8E%A7%E5%88%B6/" class="post-nav-link">
+      <div class="title">
+        <i class="fas fa-angle-left"></i> Prev:
+        <div class="title-text">生命系统的噪声控制</div>
+      </div>
+      
+      <!-- <div class="content">
+        
+1. 课题目标
+2. 课题计划
+3. 课题内容
+3.1. 震荡子的酶分子和转录因子模型
+激活子-抑制子模型
+
+
+
+
+4
+      </div> -->
+    </a>
+  </div>
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://www.zwsub.com/thumbnail/5040393_thumbnail.jpg" class="lazyload placeholder" data-srcset="https://www.zwsub.com/thumbnail/5040393_thumbnail.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt="">
+    </div>
+    <a href="/2021/05/11/Julia%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" class="post-nav-link">
+      <div class="title">
+        Next: <i class="fas fa-angle-right"></i>
+        <div class="title-text">Julia使用教程</div>
+      </div>
+      <!-- <div class="content">
+        1. 整体架构1.1. 安装及VScode配置&emsp;&emsp;首先，笔者未进行软件的系统学习，对Julia的理解
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+
+    <!-- 分享 -->
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <div id="gitment-container"></div>
+
+    
+  </div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <!-- 文章详情页右侧目录 -->
+
+  <div class="toc-aside">
+    <div class="toc-main">
+      <div class="toc-aside-title">
+        <i class="fas fa-list-ul" aria-hidden="true"></i><span>catalog</span>
+        
+          <div class="toc-open-close">catalog</div>
+        
+      </div>
+      <div class="toc-content">
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 手机端目录按钮 -->
+  <div id="toc-mobile-btn">
+    <i class="fas fa-list-ul" aria-hidden="true"></i>
+  </div>
+  <!-- js在scripts目录下的的toc.ejs里面 -->
+  
+
+  <script>
+    function openBtnClickFn () {
+      let openOrCloseBtn = $('.toc-aside .toc-aside-title .toc-open-close');
+      let open = eval('' || 'true');
+      openOrCloseBtn.click(function() {
+        if (open === true) {
+          $(".toc-aside").css({'width': 0, 'padding': 0});
+          $(".toc-content").css({'width': 0});
+          $(".toc-aside-title span, .toc-aside-title i").css({'display': 'none'});
+          $(".main-content").css({'width': '75%', 'margin': '10px auto'});
+          open = false;
+        } else {
+          $(".toc-aside").css({'width': '300px', 'padding': '0 10px'});
+          $(".toc-content").css({'width': '300px'});
+          $(".toc-aside-title span, .toc-aside-title i").css({'display': 'inline-block'});
+          $(".main-content").css({'width': '65%', 'margin-right': '10px', 'margin-left': 'calc(35% - 350px)'});
+          open = true;
+        }
+      });
+    };
+    openBtnClickFn();
+    document.addEventListener('pjax:complete', function () {
+      openBtnClickFn();
+    })
+    
+  </script>
+
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
+
+      </main>
+    </div>
+
+    <!-- 页脚 -->
+    
+  
+  <div class="footer bg-color">
+    <div class="footer-main">
+      
+        
+          <div class="footer-copyright">
+            <p>Copyright © 2021 - 2022</p>
+
+          </div>
+        
+      
+        
+          <div class="footer-custom">
+            
+              <div><br></div>
+            
+              <div><p>自强不息 厚德载物 | 自由精神 独立思想</p>
+</div>
+            
+          </div>
+        
+      
+    </div>
+  </div>
+
+
+
+    <!-- 渲染暗黑按钮 -->
+    
+      <div class="dark">
+  <div class="dark-content">
+    <i class="fas fa-moon" aria-hidden="true"></i>
+    <!-- <span>关灯</span> -->
+  </div>
+  
+</div>
+
+<script>
+  $(function() {
+    let isDark = JSON.parse(localStorage.getItem('dark'))  || JSON.parse('false');
+    if (isDark) {
+      $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+    }
+    $('.dark').click(function() {
+      if ($(document.body).is('.darkModel')) {
+        $(document.body).removeClass('darkModel');
+        localStorage.setItem('dark', false);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      } else {
+        $(document.body).addClass('darkModel');
+        localStorage.setItem('dark', true);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      }
+    })
+  })
+</script>
+    
+    <!-- 渲染回到顶部按钮 -->
+    
+      <div class="goTop top-btn-color" pointer>
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script src="/js/goTop.js"></script>
+
+    
+    <!-- 渲染左下角音乐播放器 -->
+    
+
+    <!-- 图片放大 -->
+    
+      <script src="/js/fancybox/jquery.fancybox.min.js"></script>
+    
+
+    <!-- 百度解析 -->
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <!-- 背景彩带 -->
+    
+
+    <script src="/js/utils/index.js"></script>
+    <script src="/js/app.js" data-pjax></script>
+    
+    <!-- 文章目录所需js -->
+<link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script>
+
+<script>
+  var headerEl = 'h1,h2, h3, h4,h5,h6',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -80,
+    headingsOffset: -($(window).height() * 0.4 - 45),
+    positionFixedSelector: '.toc-main',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 100) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('toc-aside')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  }
+</style> 
+
+<!-- 渲染issues标签里的内容 -->
+<script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/issues/index.js');
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof IssuesAPI == "undefined") {
+      loadIssuesJS();
+    }
+  })
+</script>
+
+<!-- 输入框打字特效 -->
+<!-- 输入框打字特效 -->
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;  // 打开随机颜色特效
+    POWERMODE.shake = false;    // 关闭输入框抖动
+    document.body.addEventListener('input', POWERMODE);//监听打字事件
+  </script>
+
+
+<!-- markdown代码一键复制功能 -->
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/v-plugs-ayu/lib/ayu.css">
+  <script src="https://cdn.jsdelivr.net/npm/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <script src="/js/clipboard/clipboard.min.js"></script>
+  <div id="appCopy">
+  </div>
+  <script data-pjax>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = 'copy';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "代码已复制，请遵守相关授权协议。",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+  
+
+<!-- 图片懒加载 -->
+<script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+<!-- 卡片滚动动画 -->
+   
+
+<!-- 评论所需js -->
+
+  
+    <script type="text/javascript">
+  var utteranceCommon = {};
+
+  function check_utterance() {
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    if (isDark) {
+      utteranceCommon.Theme = 'github-dark';
+    } else {
+      utteranceCommon.Theme = 'github-light';
+    }
+
+    return document.getElementById("gitment-container");
+  }
+  comment_el = '#gitment-container';
+  load_utterance = function () {
+    if ($(comment_el).length) {
+      // 匿名函数，防止污染全局变量
+      const HEAD = check_utterance();
+
+      var utterances = document.createElement('script');
+      utterances.type = 'text/javascript';
+      utterances.async = true;
+      utterances.setAttribute('issue-term', 'pathname')
+      utterances.setAttribute('theme', utteranceCommon.Theme)
+      utterances.setAttribute('repo', '')
+      utterances.crossorigin = 'anonymous';
+      utterances.src = 'https://utteranc.es/client.js';
+      // content 是要插入评论的地方
+      document.getElementById('gitment-container').appendChild(utterances);
+
+    }
+  }
+
+  function dark_utterance() {
+    const HEAD = check_utterance();
+    if (!HEAD) return;
+    const message = {
+      type: 'set-theme',
+      theme: utteranceCommon.Theme
+    };
+    const utteranceIframe = document.querySelector('iframe');
+    utteranceIframe.contentWindow.postMessage(message, 'https://utteranc.es');
+  }
+
+  $(document).ready(load_utterance);
+  document.addEventListener('pjax:complete', function () {
+    load_utterance();
+  });
+
+  $('.dark').click(function () {
+    setTimeout(() => {
+      dark_utterance();
+    });
+  })
+
+</script>
+
+<style>
+  .utterances {
+    max-width: inherit !important;
+  }
+</style>
+  
+
+
+<!-- 鼠标点击特效 -->
+<!-- 爱心点击 -->
+
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
+
+
+    <!-- pjax -->
+    
+
+<!-- pjax -->
+
+
+  <script src="/js/pjax@0.2.8/index.js"></script>
+  
+    <!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <div class="loading-circle"><div id="loader-circle"></div></div>
+    <script>
+      window.ShowLoading = function() {
+        $(".loading-circle").css("display", "block");
+      };
+      window.HideLoading = function() {
+        $(".loading-circle").css("display", "none");
+      }
+    </script>
+  
+	<script>
+    document.addEventListener('pjax:complete', function () {
+      window.HideLoading();
+    })
+    document.addEventListener('pjax:send', function () {
+      window.ShowLoading();
+    })
+    document.addEventListener('pjax:error', function () {
+      window.HideLoading();
+    })
+	</script>
+</div>
+
+  
+
+  <script>
+    var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })
+  </script>
+
+
+
+  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/tororo.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
