@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>Categories | 播种者</title>
+  <title>情绪记录表 | 播种者</title>
 
   <link rel="icon" type="image/jpeg" href="http://5b0988e595225.cdn.sohucs.com/images/20191220/83f8ab555c4f409aae3525164bc3f2ad.jpeg">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -514,171 +514,318 @@
     <div id="safearea">
       <main class="main" id="pjax-container" style="margin-top: 0;">
         
-<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"></div>
-<div class="bg-light-floor-categories" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -3;"></div>
+ <!-- prismjs 代码高亮 -->
+ 
 
-<div class="categories-header" style="background-image:url('https://pic2.zhimg.com/80/v2-7c496c95897fb15768593cc5170c8b1a_1440w.jpg?source=1940ef5c')">
-    <div class="categories-header-title">
-        categories
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+  
+<!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://pic4.zhimg.com/v2-ccd83d85d3cf8bc1bb09f8b4d92ea41e_720w.jpg?source=172ae18b')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        情绪记录表
+      </span>
     </div>
-    <div class="categories-header-desc">
     
-        <span class="title" id="categories-header-desc"></span>
-    <script>
-  function typedFn() {
-    const el = '#categories-header-desc';
-    const type = 'categories';
-    let desc = ''
-    var typed = new Typed(el, {
-      strings: [desc],
-      startDelay: 100,
-      typeSpeed: 100,
-      loop: true,
-      backSpeed: 50,
-      showCursor: true
-    });
-  }
-  typedFn();
+    
+  </div>
+  
+  
+</div>
+
+
+
+<div class="row justify-position">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="ab13d1407d0a0903eddc3e78b13817a6c5b89ebc88808447a5a72c452ad5fb5e">942afdc5beeae7ce54d6c3b9e171a8c525ee2b0d456a4314c4d60080df8641b778f712cdae82ee25df57886071b25aff4a4d2d2b53a07795f1d0f344b4d2fd9cf11951552ef508f7a613a8985702c4f020158d5f413b2b6d5c48371dcc884db8883886511443b0b37b5ddc0a0294d3b12ccd0c2ffeff03ff27590bcc58aed825309a8c839c67668f352772a7d3b96828ba9f47d96f3221d0d072907465eeab48a61ee9ea8549b7b12b2e931acbe5ed833b66648af911f537824ddc5e839c237d5d854a105b1850510f2e08ab9f3773221c17c2a4e49b17017f514129d7307d3a2593a2e283788e5014955395a4ad6d8d3d95cd04db47ed3180c0819dd982f3a4bda98487921d06b3be0e51bbcf6a557d48119ec346561a4c7d79e26732d24962324f3bb4fe5d6953bab43c34cab263d49faa6d47958171d80926c9daa33651104d7a6eef7cb01274c9dacefbb20f4b653d9b5f920b8c44334f81150f7812815757041cf693e28b45dd8988c1634fbc161123cee3cc94157f402cefb657b8444ba72620d19e7a34809978604a420992a998291b419aa5bf92458f6b6001997818c73499bc6052e4e663fb2fe9325ff24e47b86701631a824b64059aa0db0937f89c1f60f5e3898590d9675c9f62b99363431fc380eedc85b4cf49823469eb226434f8bb0e994a6107f159cd39a4810afec12c9598a74a24431138daecc3a2d0b77df65a3721785c579a409e6590fb2d4fc3daad7859b751be387106607e07121ef41219412929f0ee580f5e48e96231926c3ef5706fc729b1974afbf6e5f718132fd3215d3cdf4df34b1b5a98bfa9f3d91e72ccd2065afcad2c4c69227351fd075e5c2cb5191bc5a05b759b1b15dd49f6</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+      </div>
+      <div class="post-tags-categories">
+        
+      </div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://5b0988e595225.cdn.sohucs.com/images/20191226/2c3ee9deddf24e40b0206856044988c6.jpeg" class="lazyload placeholder" data-srcset="https://5b0988e595225.cdn.sohucs.com/images/20191226/2c3ee9deddf24e40b0206856044988c6.jpeg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt="">
+    </div>
+    <a href="/2021/11/21/%E7%94%9F%E5%91%BD%E8%B0%83%E6%8E%A7%E7%BD%91%E7%BB%9C%E7%A0%94%E7%A9%B6%E6%A6%82%E8%AE%BA/" class="post-nav-link">
+      <div class="title">
+        Next: <i class="fas fa-angle-right"></i>
+        <div class="title-text">生命调控网络研究概论</div>
+      </div>
+      <!-- <div class="content">
+        
+  942afdc5beeae7ce54d6c3b9e171a8c5683b35f48f89288a80c581290
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+
+    <!-- 分享 -->
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <div id="gitment-container"></div>
+
+    
+  </div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <!-- 文章详情页右侧目录 -->
+
+  <div class="toc-aside">
+    <div class="toc-main">
+      <div class="toc-aside-title">
+        <i class="fas fa-list-ul" aria-hidden="true"></i><span>catalog</span>
+        
+          <div class="toc-open-close">catalog</div>
+        
+      </div>
+      <div class="toc-content">
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 手机端目录按钮 -->
+  <div id="toc-mobile-btn">
+    <i class="fas fa-list-ul" aria-hidden="true"></i>
+  </div>
+  <!-- js在scripts目录下的的toc.ejs里面 -->
+  
+
+  <script>
+    function openBtnClickFn () {
+      let openOrCloseBtn = $('.toc-aside .toc-aside-title .toc-open-close');
+      let open = eval('' || 'true');
+      openOrCloseBtn.click(function() {
+        if (open === true) {
+          $(".toc-aside").css({'width': 0, 'padding': 0});
+          $(".toc-content").css({'width': 0});
+          $(".toc-aside-title span, .toc-aside-title i").css({'display': 'none'});
+          $(".main-content").css({'width': '75%', 'margin': '10px auto'});
+          open = false;
+        } else {
+          $(".toc-aside").css({'width': '300px', 'padding': '0 10px'});
+          $(".toc-content").css({'width': '300px'});
+          $(".toc-aside-title span, .toc-aside-title i").css({'display': 'inline-block'});
+          $(".main-content").css({'width': '65%', 'margin-right': '10px', 'margin-left': 'calc(35% - 350px)'});
+          open = true;
+        }
+      });
+    };
+    openBtnClickFn();
+    document.addEventListener('pjax:complete', function () {
+      openBtnClickFn();
+    })
+    
+  </script>
+
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
 </script>
-    
-    </div>
-    <div class="mask-box"></div>
-</div>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
 
 
 
-<div id="categories" class="container">
-    <div class="card">
-        <div class="card-content">
-            <div class="category-title center-align">
-                <i class="fas fa-tags"></i>&nbsp;&nbsp;Article Categories
-            </div>
-            <div class="category-chips">
-                
-                
-                <a href="/categories/%E7%A7%91%E5%AD%A6%E5%93%B2%E5%AD%A6/" title="科学哲学: 11">
-                    <span class="category-content"
-                        title="科学哲学" style="background-color: #A3E4D7;">科学哲学
-                        <span class="category-length">11</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/%E7%A7%91%E5%AD%A6%E5%93%B2%E5%AD%A6/%E5%93%B2%E5%AD%A6/" title="哲学: 1">
-                    <span class="category-content"
-                        title="哲学" style="background-color: #85C1E9;">哲学
-                        <span class="category-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/%E7%A7%91%E5%AD%A6%E5%93%B2%E5%AD%A6/%E5%9F%BA%E6%9C%AC%E6%8A%80%E8%83%BD/" title="基本技能: 3">
-                    <span class="category-content"
-                        title="基本技能" style="background-color: #D7BDE2;">基本技能
-                        <span class="category-length">3</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/%E7%A7%91%E5%AD%A6%E5%93%B2%E5%AD%A6/%E5%90%88%E6%88%90%E7%94%9F%E7%89%A9%E5%AD%A6/" title="合成生物学: 4">
-                    <span class="category-content"
-                        title="合成生物学" style="background-color: #A3E4D7;">合成生物学
-                        <span class="category-length">4</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/%E8%A7%81%E8%A7%A3%E8%AF%84%E8%AE%BA/" title="见解评论: 6">
-                    <span class="category-content"
-                        title="见解评论" style="background-color: #FEF9E7;">见解评论
-                        <span class="category-length">6</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/%E7%A7%91%E5%AD%A6%E5%93%B2%E5%AD%A6/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" title="机器学习: 1">
-                    <span class="category-content"
-                        title="机器学习" style="background-color: #E8F8F5;">机器学习
-                        <span class="category-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/%E7%A7%91%E5%AD%A6%E5%93%B2%E5%AD%A6/%E7%94%9F%E7%89%A9%E5%AD%A6/" title="生物学: 1">
-                    <span class="category-content"
-                        title="生物学" style="background-color: #82E0AA;">生物学
-                        <span class="category-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/%E7%A7%91%E5%AD%A6%E5%93%B2%E5%AD%A6/%E8%8B%B1%E6%96%87/" title="英文: 1">
-                    <span class="category-content"
-                        title="英文" style="background-color: #F9EBEA;">英文
-                        <span class="category-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/%E8%A7%81%E8%A7%A3%E8%AF%84%E8%AE%BA/%E7%BB%8F%E9%AA%8C/" title="经验: 2">
-                    <span class="category-content"
-                        title="经验" style="background-color: #D5F5E3;">经验
-                        <span class="category-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/%E8%A7%81%E8%A7%A3%E8%AF%84%E8%AE%BA/%E6%8A%80%E8%83%BD/" title="技能: 1">
-                    <span class="category-content"
-                        title="技能" style="background-color: #D7BDE2;">技能
-                        <span class="category-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/%E8%A7%81%E8%A7%A3%E8%AF%84%E8%AE%BA/%E6%96%87%E5%AD%A6/" title="文学: 1">
-                    <span class="category-content"
-                        title="文学" style="background-color: #F8F9F9;">文学
-                        <span class="category-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/%E8%A7%81%E8%A7%A3%E8%AF%84%E8%AE%BA/%E7%A4%BE%E4%BC%9A/" title="社会: 1">
-                    <span class="category-content"
-                        title="社会" style="background-color: #F8F9F9;">社会
-                        <span class="category-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/%E8%A7%81%E8%A7%A3%E8%AF%84%E8%AE%BA/%E7%A7%91%E5%AD%A6/" title="科学: 1">
-                    <span class="category-content"
-                        title="科学" style="background-color: #F5EEF8;">科学
-                        <span class="category-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/" title="生活记录: 1">
-                    <span class="category-content"
-                        title="生活记录" style="background-color: #E8F8F5;">生活记录
-                        <span class="category-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/%E6%83%85%E7%BB%AA/" title="情绪: 1">
-                    <span class="category-content"
-                        title="情绪" style="background-color: #FEF9E7;">情绪
-                        <span class="category-length">1</span>
-                    </span>
-                </a>
-                
-            </div>
-        </div>
-    </div>
-</div>
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
 
       </main>
     </div>
